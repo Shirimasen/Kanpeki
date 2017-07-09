@@ -23,16 +23,18 @@
   "main": "javascripts/kanpeki.js",
   "files": [
     "javascripts",
-    "stylesheets"
+    "stylesheets",
+		"public",
+		"LICENSE",
+		"README.md",
+		"webpack.mix.js"
   ],
-  "scripts": {
-		"dev": "npm run build-dev",
-		"prod": "npm run build-prod && npm run min",
-    "build-dev": "sass --scss stylesheets/_kanpeki.scss stylesheets/kanpeki.css",
-		"build-prod": "sass --scss --sourcemap=none stylesheets/_kanpeki.scss stylesheets/kanpeki.css",
-		"min": "cleancss -o stylesheets/kanpeki.css stylesheets/kanpeki.css"
+	"scripts": {
+    "dev": "NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+		"prod": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "clean-css-cli": "^4.1.6"
+    "laravel-mix": "^1.1.1"
   }
 }
