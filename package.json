@@ -1,0 +1,38 @@
+{
+  "name": "kanpeki",
+  "description": "Just another CSS framework",
+  "version": "0.0.0",
+  "author": "Shirimasen",
+  "homepage": "https://github.com/Shirimasen/Kanpeki#readme",
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "sass",
+    "responsive",
+    "framework",
+    "flexbox",
+    "web"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Shirimasen/Kanpeki.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Shirimasen/Kanpeki/issues"
+  },
+  "main": "javascripts/kanpeki.js",
+  "files": [
+    "javascripts",
+    "stylesheets"
+  ],
+  "scripts": {
+		"dev": "npm run build-dev",
+		"prod": "npm run build-prod && npm run min",
+    "build-dev": "sass --scss stylesheets/_kanpeki.scss stylesheets/kanpeki.css",
+		"build-prod": "sass --scss --sourcemap=none stylesheets/_kanpeki.scss stylesheets/kanpeki.css",
+		"min": "cleancss -o stylesheets/kanpeki.css stylesheets/kanpeki.css"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^4.1.6"
+  }
+}
