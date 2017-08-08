@@ -1,0 +1,56 @@
+/*
+ * Kanpeki
+ * Breakpoints Mixins
+*/
+
+@mixin breakpoint-up($name) {
+	@if breakpoint-has-min-width($name) {
+		@media (min-width: breakpoint-min-width($name)) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin breakpoint-down($name) {
+	@if breakpoint-has-max-width($name) {
+		@media (max-width: breakpoint-max-width($name)) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
+}
+
+@mixin breakpoint-only($name) {
+	@if breakpoint-has-min-width($name) and breakpoint-has-max-width($name) {
+		@media (min-width: breakpoint-min-width($name)) and (max-width: breakpoint-max-width($name)) {
+			@content;
+		}
+	} @else if not breakpoint-has-min-width($name) {
+		@media (max-width: breakpoint-max-width($name)) {
+			@content;
+		}
+	} @else if not breakpoint-has-max-width($name) {
+		@media (min-width: breakpoint-min-width($name)) {
+			@content;
+		}
+	}
+}
+
+@mixin breakpoint-between($name-from, $name-to) {
+	@if breakpoint-has-min-width($name-from) and breakpoint-has-max-width($name-to) {
+		@media (min-width: breakpoint-min-width($name-from)) and (max-width: breakpoint-max-width($name-to)) {
+			@content;
+		}
+	} @else if not breakpoint-has-min-width($name-from) {
+		@media (max-width: breakpoint-max-width($name-to)) {
+			@content;
+		}
+	} @else if not breakpoint-has-max-width($name-to) {
+		@media (min-width: breakpoint-min-width($name-from)) {
+			@content;
+		}
+	}
+}

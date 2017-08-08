@@ -1,3 +1,6 @@
 node_modules/
+public/
+
+.tern-project
 package-lock.json
 mix-manifest.json

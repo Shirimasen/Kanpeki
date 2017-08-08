@@ -1,0 +1,771 @@
+/*! Kanpeki | MIT | https://github.com/Shirimasen/Kanpeki */
+/*
+ * Kanpeki
+ * Combine all together
+*/
+/*
+ * Kanpeki Modules
+*/
+/*
+ * Kanpeki
+ * Combine all Variables
+*/
+/*
+ * Kanpeki
+ * Breakpoints
+*/
+/*
+ * Breakpoints must be in ascending order
+*/
+/*
+ * Kanpeki
+ * Grid Variables
+*/
+/*
+ * Aliases and custom size columns
+ * If you have 12 columns system '.column-6' will have '.column-half' alias
+ * Also you can set here custom width columns e.g (1 / 1.61803398875)
+*/
+/*
+ * Kanpeki
+ * Container Variables
+*/
+/*
+ * $container-max-widths map keys must match $breakpoints keys
+ * $breakpoints map is in 'variables/_breakpoints.scss'
+*/
+/*
+ * Kanpeki
+ * Generic Variables
+*/
+/*
+ * Kanpeki
+ * Combine all Functions
+*/
+/*
+ * Kanpeki
+ * Breakpoints Functions
+*/
+/*
+ * Kanpeki
+ * Combine all Mixins
+*/
+/*
+ * Kanpeki
+ * Breakpoints Mixins
+*/
+/*
+ * Kanpeki
+ * Grid System Mixins
+*/
+/*
+ * Kanpeki
+ * Combine all Core elements
+*/
+/*
+ * Kanpeki
+ * Normalize
+*/
+html {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
+}
+
+/*
+ * Kanpeki
+ * Generic
+*/
+body {
+  background-color: #fafcff;
+  font-size: 16px;
+  padding: 0 1rem;
+  text-rendering: optimizeSpeed;
+}
+
+@media (min-width: 1024px) {
+  body {
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/*
+ * Kanpeki
+ * Grid System
+*/
+.columns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 -0.75rem;
+}
+
+.columns.no-gutters {
+  margin: 0;
+}
+
+.columns.no-gutters > [class^="column"] {
+  padding: 0;
+}
+
+/*
+ * What every single column needs
+*/
+.column, .column-1, .column-2, .column-3, .column-one-quarter, .column-4, .column-one-third, .column-5, .column-6, .column-half, .column-two-quarters, .column-7, .column-8, .column-two-thirds, .column-9, .column-three-quarters, .column-10, .column-11, .column-12, .column-full, .column-1-phones, .column-2-phones, .column-3-phones, .column-one-quarter-phones, .column-4-phones, .column-one-third-phones, .column-5-phones, .column-6-phones, .column-half-phones, .column-two-quarters-phones, .column-7-phones, .column-8-phones, .column-two-thirds-phones, .column-9-phones, .column-three-quarters-phones, .column-10-phones, .column-11-phones, .column-12-phones, .column-full-phones, .column-1-tablets, .column-2-tablets, .column-3-tablets, .column-one-quarter-tablets, .column-4-tablets, .column-one-third-tablets, .column-5-tablets, .column-6-tablets, .column-half-tablets, .column-two-quarters-tablets, .column-7-tablets, .column-8-tablets, .column-two-thirds-tablets, .column-9-tablets, .column-three-quarters-tablets, .column-10-tablets, .column-11-tablets, .column-12-tablets, .column-full-tablets, .column-1-small-desktops, .column-2-small-desktops, .column-3-small-desktops, .column-one-quarter-small-desktops, .column-4-small-desktops, .column-one-third-small-desktops, .column-5-small-desktops, .column-6-small-desktops, .column-half-small-desktops, .column-two-quarters-small-desktops, .column-7-small-desktops, .column-8-small-desktops, .column-two-thirds-small-desktops, .column-9-small-desktops, .column-three-quarters-small-desktops, .column-10-small-desktops, .column-11-small-desktops, .column-12-small-desktops, .column-full-small-desktops, .column-1-desktops, .column-2-desktops, .column-3-desktops, .column-one-quarter-desktops, .column-4-desktops, .column-one-third-desktops, .column-5-desktops, .column-6-desktops, .column-half-desktops, .column-two-quarters-desktops, .column-7-desktops, .column-8-desktops, .column-two-thirds-desktops, .column-9-desktops, .column-three-quarters-desktops, .column-10-desktops, .column-11-desktops, .column-12-desktops, .column-full-desktops, .column-one-fifth, .column-one-fifth-phones, .column-one-fifth-tablets, .column-one-fifth-small-desktops, .column-one-fifth-desktops, .column-two-fifths, .column-two-fifths-phones, .column-two-fifths-tablets, .column-two-fifths-small-desktops, .column-two-fifths-desktops, .column-three-fifths, .column-three-fifths-phones, .column-three-fifths-tablets, .column-three-fifths-small-desktops, .column-three-fifths-desktops, .column-four-fifths, .column-four-fifths-phones, .column-four-fifths-tablets, .column-four-fifths-small-desktops, .column-four-fifths-desktops {
+  padding: 0.75rem;
+  width: 100%;
+  min-height: 1px;
+}
+
+.show-grid > .column, .show-grid > .column-1, .show-grid > .column-2, .show-grid > .column-3, .show-grid > .column-one-quarter, .show-grid > .column-4, .show-grid > .column-one-third, .show-grid > .column-5, .show-grid > .column-6, .show-grid > .column-half, .show-grid > .column-two-quarters, .show-grid > .column-7, .show-grid > .column-8, .show-grid > .column-two-thirds, .show-grid > .column-9, .show-grid > .column-three-quarters, .show-grid > .column-10, .show-grid > .column-11, .show-grid > .column-12, .show-grid > .column-full, .show-grid > .column-1-phones, .show-grid > .column-2-phones, .show-grid > .column-3-phones, .show-grid > .column-one-quarter-phones, .show-grid > .column-4-phones, .show-grid > .column-one-third-phones, .show-grid > .column-5-phones, .show-grid > .column-6-phones, .show-grid > .column-half-phones, .show-grid > .column-two-quarters-phones, .show-grid > .column-7-phones, .show-grid > .column-8-phones, .show-grid > .column-two-thirds-phones, .show-grid > .column-9-phones, .show-grid > .column-three-quarters-phones, .show-grid > .column-10-phones, .show-grid > .column-11-phones, .show-grid > .column-12-phones, .show-grid > .column-full-phones, .show-grid > .column-1-tablets, .show-grid > .column-2-tablets, .show-grid > .column-3-tablets, .show-grid > .column-one-quarter-tablets, .show-grid > .column-4-tablets, .show-grid > .column-one-third-tablets, .show-grid > .column-5-tablets, .show-grid > .column-6-tablets, .show-grid > .column-half-tablets, .show-grid > .column-two-quarters-tablets, .show-grid > .column-7-tablets, .show-grid > .column-8-tablets, .show-grid > .column-two-thirds-tablets, .show-grid > .column-9-tablets, .show-grid > .column-three-quarters-tablets, .show-grid > .column-10-tablets, .show-grid > .column-11-tablets, .show-grid > .column-12-tablets, .show-grid > .column-full-tablets, .show-grid > .column-1-small-desktops, .show-grid > .column-2-small-desktops, .show-grid > .column-3-small-desktops, .show-grid > .column-one-quarter-small-desktops, .show-grid > .column-4-small-desktops, .show-grid > .column-one-third-small-desktops, .show-grid > .column-5-small-desktops, .show-grid > .column-6-small-desktops, .show-grid > .column-half-small-desktops, .show-grid > .column-two-quarters-small-desktops, .show-grid > .column-7-small-desktops, .show-grid > .column-8-small-desktops, .show-grid > .column-two-thirds-small-desktops, .show-grid > .column-9-small-desktops, .show-grid > .column-three-quarters-small-desktops, .show-grid > .column-10-small-desktops, .show-grid > .column-11-small-desktops, .show-grid > .column-12-small-desktops, .show-grid > .column-full-small-desktops, .show-grid > .column-1-desktops, .show-grid > .column-2-desktops, .show-grid > .column-3-desktops, .show-grid > .column-one-quarter-desktops, .show-grid > .column-4-desktops, .show-grid > .column-one-third-desktops, .show-grid > .column-5-desktops, .show-grid > .column-6-desktops, .show-grid > .column-half-desktops, .show-grid > .column-two-quarters-desktops, .show-grid > .column-7-desktops, .show-grid > .column-8-desktops, .show-grid > .column-two-thirds-desktops, .show-grid > .column-9-desktops, .show-grid > .column-three-quarters-desktops, .show-grid > .column-10-desktops, .show-grid > .column-11-desktops, .show-grid > .column-12-desktops, .show-grid > .column-full-desktops, .show-grid > .column-one-fifth, .show-grid > .column-one-fifth-phones, .show-grid > .column-one-fifth-tablets, .show-grid > .column-one-fifth-small-desktops, .show-grid > .column-one-fifth-desktops, .show-grid > .column-two-fifths, .show-grid > .column-two-fifths-phones, .show-grid > .column-two-fifths-tablets, .show-grid > .column-two-fifths-small-desktops, .show-grid > .column-two-fifths-desktops, .show-grid > .column-three-fifths, .show-grid > .column-three-fifths-phones, .show-grid > .column-three-fifths-tablets, .show-grid > .column-three-fifths-small-desktops, .show-grid > .column-three-fifths-desktops, .show-grid > .column-four-fifths, .show-grid > .column-four-fifths-phones, .show-grid > .column-four-fifths-tablets, .show-grid > .column-four-fifths-small-desktops, .show-grid > .column-four-fifths-desktops {
+  background-color: #c7ddff;
+  outline: 1px solid #94bfff;
+}
+
+/*
+ * This is just auto width column
+ * Nothing else
+*/
+.column {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0;
+}
+
+/*
+ * All breakpoints columns
+*/
+.column-1 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 8.33333333%;
+          flex: 0 0 8.33333333%;
+  max-width: 8.33333333%;
+}
+
+.column-2 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 16.66666667%;
+          flex: 0 0 16.66666667%;
+  max-width: 16.66666667%;
+}
+
+.column-3, .column-one-quarter {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+          flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.column-4, .column-one-third {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 33.33333333%;
+          flex: 0 0 33.33333333%;
+  max-width: 33.33333333%;
+}
+
+.column-5 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 41.66666667%;
+          flex: 0 0 41.66666667%;
+  max-width: 41.66666667%;
+}
+
+.column-6, .column-half, .column-two-quarters {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.column-7 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 58.33333333%;
+          flex: 0 0 58.33333333%;
+  max-width: 58.33333333%;
+}
+
+.column-8, .column-two-thirds {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 66.66666667%;
+          flex: 0 0 66.66666667%;
+  max-width: 66.66666667%;
+}
+
+.column-9, .column-three-quarters {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 75%;
+          flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.column-10 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 83.33333333%;
+          flex: 0 0 83.33333333%;
+  max-width: 83.33333333%;
+}
+
+.column-11 {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 91.66666667%;
+          flex: 0 0 91.66666667%;
+  max-width: 91.66666667%;
+}
+
+.column-12, .column-full {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  max-width: 100%;
+}
+
+/*
+ * Per breakpoint columns
+*/
+.column-1-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 8.33333333%;
+          flex: 0 0 8.33333333%;
+  max-width: 8.33333333%;
+}
+
+.column-2-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 16.66666667%;
+          flex: 0 0 16.66666667%;
+  max-width: 16.66666667%;
+}
+
+.column-3-phones, .column-one-quarter-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+          flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.column-4-phones, .column-one-third-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 33.33333333%;
+          flex: 0 0 33.33333333%;
+  max-width: 33.33333333%;
+}
+
+.column-5-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 41.66666667%;
+          flex: 0 0 41.66666667%;
+  max-width: 41.66666667%;
+}
+
+.column-6-phones, .column-half-phones, .column-two-quarters-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.column-7-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 58.33333333%;
+          flex: 0 0 58.33333333%;
+  max-width: 58.33333333%;
+}
+
+.column-8-phones, .column-two-thirds-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 66.66666667%;
+          flex: 0 0 66.66666667%;
+  max-width: 66.66666667%;
+}
+
+.column-9-phones, .column-three-quarters-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 75%;
+          flex: 0 0 75%;
+  max-width: 75%;
+}
+
+.column-10-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 83.33333333%;
+          flex: 0 0 83.33333333%;
+  max-width: 83.33333333%;
+}
+
+.column-11-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 91.66666667%;
+          flex: 0 0 91.66666667%;
+  max-width: 91.66666667%;
+}
+
+.column-12-phones, .column-full-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .column-1-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 8.33333333%;
+            flex: 0 0 8.33333333%;
+    max-width: 8.33333333%;
+  }
+  .column-2-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 16.66666667%;
+            flex: 0 0 16.66666667%;
+    max-width: 16.66666667%;
+  }
+  .column-3-tablets, .column-one-quarter-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+            flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .column-4-tablets, .column-one-third-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 33.33333333%;
+            flex: 0 0 33.33333333%;
+    max-width: 33.33333333%;
+  }
+  .column-5-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 41.66666667%;
+            flex: 0 0 41.66666667%;
+    max-width: 41.66666667%;
+  }
+  .column-6-tablets, .column-half-tablets, .column-two-quarters-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .column-7-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 58.33333333%;
+            flex: 0 0 58.33333333%;
+    max-width: 58.33333333%;
+  }
+  .column-8-tablets, .column-two-thirds-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 66.66666667%;
+            flex: 0 0 66.66666667%;
+    max-width: 66.66666667%;
+  }
+  .column-9-tablets, .column-three-quarters-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 75%;
+            flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .column-10-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 83.33333333%;
+            flex: 0 0 83.33333333%;
+    max-width: 83.33333333%;
+  }
+  .column-11-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 91.66666667%;
+            flex: 0 0 91.66666667%;
+    max-width: 91.66666667%;
+  }
+  .column-12-tablets, .column-full-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .column-1-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 8.33333333%;
+            flex: 0 0 8.33333333%;
+    max-width: 8.33333333%;
+  }
+  .column-2-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 16.66666667%;
+            flex: 0 0 16.66666667%;
+    max-width: 16.66666667%;
+  }
+  .column-3-small-desktops, .column-one-quarter-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+            flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .column-4-small-desktops, .column-one-third-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 33.33333333%;
+            flex: 0 0 33.33333333%;
+    max-width: 33.33333333%;
+  }
+  .column-5-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 41.66666667%;
+            flex: 0 0 41.66666667%;
+    max-width: 41.66666667%;
+  }
+  .column-6-small-desktops, .column-half-small-desktops, .column-two-quarters-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .column-7-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 58.33333333%;
+            flex: 0 0 58.33333333%;
+    max-width: 58.33333333%;
+  }
+  .column-8-small-desktops, .column-two-thirds-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 66.66666667%;
+            flex: 0 0 66.66666667%;
+    max-width: 66.66666667%;
+  }
+  .column-9-small-desktops, .column-three-quarters-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 75%;
+            flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .column-10-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 83.33333333%;
+            flex: 0 0 83.33333333%;
+    max-width: 83.33333333%;
+  }
+  .column-11-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 91.66666667%;
+            flex: 0 0 91.66666667%;
+    max-width: 91.66666667%;
+  }
+  .column-12-small-desktops, .column-full-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .column-1-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 8.33333333%;
+            flex: 0 0 8.33333333%;
+    max-width: 8.33333333%;
+  }
+  .column-2-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 16.66666667%;
+            flex: 0 0 16.66666667%;
+    max-width: 16.66666667%;
+  }
+  .column-3-desktops, .column-one-quarter-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 25%;
+            flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .column-4-desktops, .column-one-third-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 33.33333333%;
+            flex: 0 0 33.33333333%;
+    max-width: 33.33333333%;
+  }
+  .column-5-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 41.66666667%;
+            flex: 0 0 41.66666667%;
+    max-width: 41.66666667%;
+  }
+  .column-6-desktops, .column-half-desktops, .column-two-quarters-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 50%;
+            flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .column-7-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 58.33333333%;
+            flex: 0 0 58.33333333%;
+    max-width: 58.33333333%;
+  }
+  .column-8-desktops, .column-two-thirds-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 66.66666667%;
+            flex: 0 0 66.66666667%;
+    max-width: 66.66666667%;
+  }
+  .column-9-desktops, .column-three-quarters-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 75%;
+            flex: 0 0 75%;
+    max-width: 75%;
+  }
+  .column-10-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 83.33333333%;
+            flex: 0 0 83.33333333%;
+    max-width: 83.33333333%;
+  }
+  .column-11-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 91.66666667%;
+            flex: 0 0 91.66666667%;
+    max-width: 91.66666667%;
+  }
+  .column-12-desktops, .column-full-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/*
+ * Extending outside of breakpoints
+ * SASS don't allow to extend from other scope
+*/
+/*
+ * Aliases
+*/
+/*
+ * Custom columns
+*/
+.column-one-fifth {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 20%;
+          flex: 0 0 20%;
+  max-width: 20%;
+}
+
+.column-one-fifth-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 20%;
+          flex: 0 0 20%;
+  max-width: 20%;
+}
+
+@media (min-width: 768px) {
+  .column-one-fifth-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .column-one-fifth-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .column-one-fifth-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 20%;
+            flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+.column-two-fifths {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 40%;
+          flex: 0 0 40%;
+  max-width: 40%;
+}
+
+.column-two-fifths-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 40%;
+          flex: 0 0 40%;
+  max-width: 40%;
+}
+
+@media (min-width: 768px) {
+  .column-two-fifths-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 40%;
+            flex: 0 0 40%;
+    max-width: 40%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .column-two-fifths-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 40%;
+            flex: 0 0 40%;
+    max-width: 40%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .column-two-fifths-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 40%;
+            flex: 0 0 40%;
+    max-width: 40%;
+  }
+}
+
+.column-three-fifths {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60%;
+          flex: 0 0 60%;
+  max-width: 60%;
+}
+
+.column-three-fifths-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60%;
+          flex: 0 0 60%;
+  max-width: 60%;
+}
+
+@media (min-width: 768px) {
+  .column-three-fifths-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 60%;
+            flex: 0 0 60%;
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .column-three-fifths-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 60%;
+            flex: 0 0 60%;
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .column-three-fifths-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 60%;
+            flex: 0 0 60%;
+    max-width: 60%;
+  }
+}
+
+.column-four-fifths {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 80%;
+          flex: 0 0 80%;
+  max-width: 80%;
+}
+
+.column-four-fifths-phones {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 80%;
+          flex: 0 0 80%;
+  max-width: 80%;
+}
+
+@media (min-width: 768px) {
+  .column-four-fifths-tablets {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 80%;
+            flex: 0 0 80%;
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .column-four-fifths-small-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 80%;
+            flex: 0 0 80%;
+    max-width: 80%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .column-four-fifths-desktops {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 80%;
+            flex: 0 0 80%;
+    max-width: 80%;
+  }
+}
+
+.columns-divider {
+  width: 100%;
+}
+
+/*
+ * Kanpeki
+ * Container
+*/
+.container {
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .container {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/*
+ * Kanpeki
+ * Utilities
+*/
+/*
+ * Kanpeki
+ * Combine all Components
+*/

@@ -1,0 +1,14 @@
+/*
+ * Kanpeki
+ * Breakpoints
+*/
+
+/*
+ * Breakpoints must be in ascending order
+*/
+$breakpoints: (
+	phones: 0,
+	tablets: 768px,
+	small-desktops: 1024px,
+	desktops: 1280px
+) !default;

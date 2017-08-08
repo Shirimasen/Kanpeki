@@ -1,0 +1,50 @@
+/*
+ * Kanpeki
+ * Breakpoints Functions
+*/
+
+@function breakpoint-exists($name) {
+	@if map-has-key($breakpoints, $name) {
+		@return ture;
+	} @else {
+		@error 'The breakpoint named #{$name} does not exist!';
+		@return false;
+	}
+}
+
+@function breakpoint-min-width($name) {
+	@if breakpoint-exists($name) {
+		@return map-get($breakpoints, $name);
+	}
+}
+
+@function breakpoint-max-width($name) {
+	@if breakpoint-exists($name) {
+		$breakpoints-names: map-keys($breakpoints);
+		$breakpoints-values: map-values($breakpoints);
+		
+		$name-index: index($breakpoints-names, $name);
+		$next-index: $name-index + 1;
+		
+		$next: nth($breakpoints-values, $next-index);
+		
+		@return $next - 1px;
+	}
+}
+
+@function breakpoint-has-max-width($name) {
+	@if breakpoint-exists($name) {
+		$breakpoints-names: map-keys($breakpoints);
+		$breakpoints-length: length($breakpoints-names);
+		
+		$name-index: index($breakpoints-names, $name);
+		
+		@return $name-index < $breakpoints-length;
+	}
+}
+
+@function breakpoint-has-min-width($name) {
+	@if breakpoint-exists($name) {
+		@return map-get($breakpoints, $name) != 0;
+	}
+}

@@ -24,17 +24,17 @@
   "files": [
     "javascripts",
     "stylesheets",
-		"public",
-		"LICENSE",
-		"README.md",
-		"webpack.mix.js"
+    "public",
+    "LICENSE",
+    "README.md",
+    "webpack.mix.js"
   ],
-	"scripts": {
+  "scripts": {
     "dev": "NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-		"prod": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "laravel-mix": "^1.1.1"
+    "laravel-mix": "^1.2.2"
   }
 }

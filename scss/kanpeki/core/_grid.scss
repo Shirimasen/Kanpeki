@@ -1,0 +1,123 @@
+/*
+ * Kanpeki
+ * Grid System
+*/
+
+.columns {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 (-$grid-gutter / 2);
+	
+	&.no-gutters {
+		margin: 0;
+		
+		> [class^="column"] {
+			padding: 0;
+		}
+	}
+}
+
+/*
+ * What every single column needs
+*/
+%column {
+	padding: $grid-gutter / 2;
+	width: 100%;
+	min-height: 1px;
+	
+	.show-grid > & {
+		background-color: darken($generic-body-background-color, 10%);
+		outline: 1px solid darken($generic-body-background-color, 20%);
+	}
+}
+
+/*
+ * This is just auto width column
+ * Nothing else
+*/
+.column {
+	@extend %column;
+	flex: 1 1 0;
+}
+
+/*
+ * All breakpoints columns
+*/
+@for $i from 1 through $grid-columns-count {
+	.column-#{$i} {
+		@extend %column;
+		@include make-regular-column($i);
+	}
+}
+
+/*
+ * Per breakpoint columns
+*/
+@each $name, $size in $breakpoints {
+	@include breakpoint-up($name) {
+		@for $i from 1 through $grid-columns-count {
+			.column-#{$i}-#{$name} {
+				@include make-regular-column($i);
+			}
+		}
+	}
+}
+
+/*
+ * Extending outside of breakpoints
+ * SASS don't allow to extend from other scope
+*/
+@each $name, $size in $breakpoints {
+	@for $i from 1 through $grid-columns-count {
+		.column-#{$i}-#{$name} {
+			@extend %column;
+		}
+	}
+}
+
+/*
+ * Aliases
+*/
+@for $i from 1 through $grid-columns-count {
+	@each $name, $width in $grid-aliases {
+		@if ($i / $grid-columns-count) == $width {
+			.column-#{$name} {
+				@extend .column-#{$i};
+			}
+			
+			@each $breakpoint, $size in $breakpoints {
+				.column-#{$name}-#{$breakpoint} {
+					@extend .column-#{$i}-#{$breakpoint};
+				}
+			}
+			
+			$grid-aliases: map-remove($grid-aliases, $name);
+		}
+	}
+}
+
+/*
+ * Custom columns
+*/
+@each $name, $width in $grid-aliases {
+	.column-#{$name} {
+		@extend %column;
+		@include make-custom-column($width);
+	}
+	
+	@each $breakpoint, $size in $breakpoints {
+		.column-#{$name}-#{$breakpoint} {
+			@extend %column;
+		}
+		
+		@include breakpoint-up($breakpoint) {
+			.column-#{$name}-#{$breakpoint} {
+				@include make-custom-column($width);
+			}
+		}
+	}
+}
+
+.columns-divider {
+	width: 100%;
+}

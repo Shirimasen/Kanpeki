@@ -1,0 +1,17 @@
+/*
+ * Kanpeki
+ * Generic
+*/
+
+body {
+	background-color: $generic-body-background-color;
+	font-size: $generic-body-font-size;
+	
+	padding: 0 1rem;
+	
+	text-rendering: optimizeSpeed;
+	
+	@include breakpoint-up('small-desktops') {
+		text-rendering: optimizeLegibility;
+	}
+}

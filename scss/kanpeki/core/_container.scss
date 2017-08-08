@@ -1,0 +1,14 @@
+/*
+ * Kanpeki
+ * Container
+*/
+
+.container {
+	margin: 0 auto;
+	
+	@each $name, $size in $container-max-widths {
+		@include breakpoint-only($name) {
+			max-width: $size;
+		}
+	}
+}
