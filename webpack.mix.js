@@ -11,8 +11,8 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('javascripts/kanpeki.js', 'dist');
-mix.sass('stylesheets/kanpeki.scss', 'dist');
+mix.js('js/kanpeki.js', 'dist');
+mix.sass('scss/kanpeki.scss', 'dist');
 
 mix.disableNotifications();
 
