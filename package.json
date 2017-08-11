@@ -20,21 +20,20 @@
   "bugs": {
     "url": "https://github.com/Shirimasen/Kanpeki/issues"
   },
-  "main": "javascripts/kanpeki.js",
+  "main": "js/kanpeki.js",
   "files": [
-    "javascripts",
-    "stylesheets",
-    "public",
+    "dist",
+    "docs",
+    "js",
+    "scss",
     "LICENSE",
-    "README.md",
-    "webpack.mix.js"
+    "README.md"
   ],
-  "scripts": {
-    "dev": "NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "prod": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+	"scripts": {
+    "build": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "devDependencies": {
-    "laravel-mix": "^1.2.2"
+    "laravel-mix": "^1.4.2"
   }
 }
