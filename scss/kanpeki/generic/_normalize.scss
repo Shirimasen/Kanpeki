@@ -1,0 +1,24 @@
+/*
+ * Kanpeki
+ * Normalize
+*/
+
+html, body {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	height: 100%;
+	overflow: auto;
+	box-sizing: border-box;
+}
+
+body {
+	min-height: 100%;
+}
+
+*, *:before, *:after {
+	box-sizing: inherit;
+}

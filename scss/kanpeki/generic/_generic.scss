@@ -5,9 +5,10 @@
 
 body {
 	background-color: $generic-body-background-color;
+	color: $generic-body-font-color;
+	font-family: $generic-body-font-family;
 	font-size: $generic-body-font-size;
-	
-	padding: 0 1rem;
+	line-height: $generic-body-line-height;
 	
 	text-rendering: optimizeSpeed;
 	

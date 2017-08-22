@@ -1,0 +1,12 @@
+/*
+ * Kanpeki
+ * Generic Functions
+*/
+
+@function if-unitless-make-percentage($number) {
+	@if unitless($number) {
+		$number: percentage($number);
+	}
+	
+	@return $number;
+}

@@ -1,0 +1,184 @@
+/*
+ * Kanpeki
+ * Columns
+*/
+
+.columns {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 (-$columns-gutter / 2);
+	
+	& & {
+		margin: (-$columns-gutter / 2);
+	}
+	
+	&.no-gutters, &.no-gutters & {
+		margin: 0;
+		
+		> [class^="column"] {
+			padding: 0;
+		}
+	}
+}
+
+// What every single column needs
+%column {
+	padding: $columns-gutter / 2;
+	width: 100%;
+	min-height: 1px;
+	
+	.show-grid > & {
+		background-color: darken($generic-body-background-color, 10%);
+		outline: 1px solid darken($generic-body-background-color, 20%);
+	}
+}
+
+.columns-divider {
+	width: 100% !important;
+}
+
+/*
+ * Extending first
+ * -----------------------------------------------------------------------------
+*/
+
+// Auto width column
+.column {
+	@extend %column;
+}
+
+// Clamped width columns
+.column-clamped {
+	@extend %column;
+}
+
+// Default columns
+@for $i from 1 through $columns-count {
+	.column-#{$i} {
+		@extend %column;
+	}
+}
+
+// Per breakpoint columns
+@each $name, $size in $breakpoints {
+	@if breakpoint-has-min-width($name) {
+		// Per breakpoint default columns
+		@for $i from 1 through $columns-count {
+			.column-#{$i}-#{$name} {
+				@extend %column;
+			}
+		}
+		
+		// Per breakpoint auto width columns
+		.column-#{$name} {
+			@extend %column;
+		}
+		
+		// Per breakpoint clamped width columns
+		.column-clamped-#{$name} {
+			@extend %column;
+		}
+	}
+}
+
+/*
+ * Aliases
+ * Looking if there are columns with the same size as specified in $columns-aliases
+ * If there are extend them and remove from map
+ * Because we removed them we left with custom size columns that can be easy made later
+*/
+@for $i from 1 through $columns-count {
+	@each $name, $width in $columns-aliases {
+		@if percentage($i / $columns-count) == if-unitless-make-percentage($width) {
+			.column-#{$name} {
+				@extend .column-#{$i};
+			}
+			
+			@each $breakpoint, $size in $breakpoints {
+				@if breakpoint-has-min-width($breakpoint) {
+					.column-#{$name}-#{$breakpoint} {
+						@extend .column-#{$i}-#{$breakpoint};
+					}
+				}
+			}
+			
+			$columns-aliases: map-remove($columns-aliases, $name);
+		}
+	}
+}
+
+// Custom columns
+@each $name, $width in $columns-aliases {
+	.column-#{$name} {
+		@extend %column;
+	}
+	
+	// Per breakpoint custom columns
+	@each $breakpoint, $size in $breakpoints {
+		@if breakpoint-has-min-width($breakpoint) {
+			.column-#{$name}-#{$breakpoint} {
+				@extend %column;
+			}
+		}
+	}
+}
+
+/*
+ * Setting each column width
+ * -----------------------------------------------------------------------------
+*/
+
+// Auto width column
+.column {
+	@include column-auto;
+}
+
+// Clamped width columns
+.column-clamped {
+	@include column-clamped;
+}
+
+// Default columns
+@for $i from 1 through $columns-count {
+	.column-#{$i} {
+		@include make-regular-column($i);
+	}
+}
+
+// Custom columns
+@each $name, $width in $columns-aliases {
+	.column-#{$name} {
+		@include make-column($width);
+	}
+}
+
+// Per breakpoint columns
+@each $name, $size in $breakpoints {
+	@if breakpoint-has-min-width($name) {
+		@include breakpoint-up($name) {
+			// Per breakpoint default columns
+			@for $i from 1 through $columns-count {
+				.column-#{$i}-#{$name} {
+					@include make-regular-column($i);
+				}
+			}
+			
+			// Per breakpoint auto width columns
+			.column-#{$name} {
+				@include column-auto;
+			}
+			
+			// Per breakpoint clamped width columns
+			.column-clamped-#{$name} {
+				@include column-clamped;
+			}
+			
+			// Per breakpoint custom columns
+			@each $alias, $width in $columns-aliases {
+				.column-#{$alias}-#{$name} {
+					@include make-column($width);
+				}
+			}
+		}
+	}
+}

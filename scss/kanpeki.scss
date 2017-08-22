@@ -6,8 +6,10 @@
 */
 
 @import 'kanpeki/variables';
+@import 'kanpeki/theme';
 @import 'kanpeki/functions';
 @import 'kanpeki/mixins';
-@import 'kanpeki/core';
+@import 'kanpeki/generic';
+@import 'kanpeki/layout';
 @import 'kanpeki/utilities';
 @import 'kanpeki/components';
