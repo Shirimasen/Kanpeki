@@ -10,9 +10,5 @@ body {
 	font-size: $generic-body-font-size;
 	line-height: $generic-body-line-height;
 	
-	text-rendering: optimizeSpeed;
-	
-	@include breakpoint-up('small-desktops') {
-		text-rendering: optimizeLegibility;
-	}
+	text-rendering: optimizeLegibility;
 }

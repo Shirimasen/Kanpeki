@@ -4,12 +4,12 @@
 */
 
 /*
- * $container-max-widths map keys must match $breakpoints keys
+ * $container-max-widths keys must match $breakpoints keys
  * $breakpoints map is in 'variables/_breakpoints.scss'
 */
 $container-max-widths: (
-	phones: 100%,
-	tablets: 720px,
-	small-desktops: 960px,
-	desktops: 1200px
+	tiny: 100%,
+	small: 720px,
+	medium: 960px,
+	large: 1200px
 ) !default;

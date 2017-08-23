@@ -6,31 +6,61 @@
 .columns {
 	display: flex;
 	flex-wrap: wrap;
-	margin: 0 (-$columns-gutter / 2);
 	
-	& & {
-		margin: (-$columns-gutter / 2);
+	/*
+	 * This is important
+	 * =================
+	 * You may wonder why top and bottom margin are also set and then
+	 * we have so many complicated selectors to cancel that
+	 * This is because other things than coluns should stick to them
+	 * but we need padding on '.column' to make '.columns-divider'
+	 * and columns wrapping work as intended
+	 * Check this: http://i.imgur.com/ea7hoha.png
+	*/
+	margin: (-$columns-gutter / 2);
+	
+	// Add gutter between '.columns' on top and '.no-gutters' on bottom
+	&:not(.no-gutters) + &.no-gutters {
+		margin-top: $columns-gutter;
 	}
 	
+	// Make gutter proper size if two '.columns' are siblings
+	& + & {
+		margin-top: ($columns-gutter / 2);
+	}
+	
+	/*
+	 * I have no idea what this is
+	 * That's why you shouldn't break complicated things to two days
+	 * But looks like everything works fine without it
+	 * Leaving this here just in case (-_-)
+	 * & & {
+	 * 	margin: (-$columns-gutter / 2);
+	 * }
+	*/
+	
+	// '.no-gutters' implementation and inheritance
 	&.no-gutters, &.no-gutters & {
 		margin: 0;
-		
-		> [class^="column"] {
-			padding: 0;
-		}
+	}
+	
+	&.no-gutters [class*="column"] {
+		padding: 0;
+	}
+	
+	// Nice for checking if columns are placed properly
+	&.show [class*="column"] {
+		// background-clip: content-box;
+		background-color: darken($generic-body-background-color, 10%);
+		outline: 1px solid darken($generic-body-background-color, 20%);
 	}
 }
 
 // What every single column needs
 %column {
-	padding: $columns-gutter / 2;
-	width: 100%;
+	padding: ($columns-gutter / 2);
 	min-height: 1px;
-	
-	.show-grid > & {
-		background-color: darken($generic-body-background-color, 10%);
-		outline: 1px solid darken($generic-body-background-color, 20%);
-	}
+	width: 100%;
 }
 
 .columns-divider {
