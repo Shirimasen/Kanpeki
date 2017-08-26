@@ -1,0 +1,22 @@
+/*
+ * Kanpeki
+ * Flexbox Utilities
+*/
+
+/*
+ * Order flex items
+ * -----------------------------------------------------------------------------
+*/
+.order-first {
+	order: ($columns-count + 1) * -1;
+}
+
+.order-last {
+	order: 1;
+}
+
+@for $i from 1 through $columns-count {
+	.order-#{$i} {
+		order: ($columns-count - $i + 1) * -1;
+	}
+}
