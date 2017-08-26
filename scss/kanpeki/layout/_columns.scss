@@ -29,16 +29,6 @@
 		margin-top: ($columns-gutter / 2);
 	}
 	
-	/*
-	 * I have no idea what this is
-	 * That's why you shouldn't break complicated things to two days
-	 * But looks like everything works fine without it
-	 * Leaving this here just in case (-_-)
-	 * & & {
-	 * 	margin: (-$columns-gutter / 2);
-	 * }
-	*/
-	
 	// '.no-gutters' implementation and inheritance
 	&.no-gutters, &.no-gutters & {
 		margin: 0;
