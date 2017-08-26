@@ -6,30 +6,16 @@
 .columns {
 	display: flex;
 	flex-wrap: wrap;
-	
-	/*
-	 * This is important
-	 * =================
-	 * You may wonder why top and bottom margin are also set and then
-	 * we have so many complicated selectors to cancel that
-	 * This is because other things than coluns should stick to them
-	 * but we need padding on '.column' to make '.columns-divider'
-	 * and columns wrapping work as intended
-	 * Check this: http://i.imgur.com/ea7hoha.png
-	*/
 	margin: (-$columns-gutter / 2);
 	
-	// Add gutter between '.columns' on top and '.no-gutters' on bottom
 	&:not(.no-gutters) + &.no-gutters {
 		margin-top: $columns-gutter;
 	}
 	
-	// Make gutter proper size if two '.columns' are siblings
 	& + & {
 		margin-top: ($columns-gutter / 2);
 	}
 	
-	// '.no-gutters' implementation and inheritance
 	&.no-gutters, &.no-gutters & {
 		margin: 0;
 	}
@@ -38,7 +24,6 @@
 		padding: 0;
 	}
 	
-	// Nice for checking if columns are placed properly
 	&.show [class*="column"] {
 		// background-clip: content-box;
 		background-color: darken($generic-body-background-color, 10%);
@@ -46,7 +31,6 @@
 	}
 }
 
-// What every single column needs
 %column {
 	padding: ($columns-gutter / 2);
 	min-height: 1px;
@@ -58,144 +42,84 @@
 }
 
 /*
- * Extending first
+ * Columns Sizes
  * -----------------------------------------------------------------------------
 */
 
-// Auto width column
+$columns-sizes: generate-columns-sizes();
+$columns-aliases: generate-columns-aliases();
+
 .column {
 	@extend %column;
-}
-
-// Clamped width columns
-.column-clamped {
-	@extend %column;
-}
-
-// Default columns
-@for $i from 1 through $columns-count {
-	.column-#{$i} {
-		@extend %column;
-	}
-}
-
-// Per breakpoint columns
-@each $name, $size in $breakpoints {
-	@if breakpoint-has-min-width($name) {
-		// Per breakpoint default columns
-		@for $i from 1 through $columns-count {
-			.column-#{$i}-#{$name} {
-				@extend %column;
-			}
-		}
-		
-		// Per breakpoint auto width columns
-		.column-#{$name} {
-			@extend %column;
-		}
-		
-		// Per breakpoint clamped width columns
-		.column-clamped-#{$name} {
-			@extend %column;
-		}
-	}
-}
-
-/*
- * Aliases
- * Looking if there are columns with the same size as specified in $columns-aliases
- * If there are extend them and remove from map
- * Because we removed them we left with custom size columns that can be easy made later
-*/
-@for $i from 1 through $columns-count {
-	@each $name, $width in $columns-aliases {
-		@if percentage($i / $columns-count) == if-unitless-make-percentage($width) {
-			.column-#{$name} {
-				@extend .column-#{$i};
-			}
-			
-			@each $breakpoint, $size in $breakpoints {
-				@if breakpoint-has-min-width($breakpoint) {
-					.column-#{$name}-#{$breakpoint} {
-						@extend .column-#{$i}-#{$breakpoint};
-					}
-				}
-			}
-			
-			$columns-aliases: map-remove($columns-aliases, $name);
-		}
-	}
-}
-
-// Custom columns
-@each $name, $width in $columns-aliases {
-	.column-#{$name} {
-		@extend %column;
-	}
-	
-	// Per breakpoint custom columns
-	@each $breakpoint, $size in $breakpoints {
-		@if breakpoint-has-min-width($breakpoint) {
-			.column-#{$name}-#{$breakpoint} {
-				@extend %column;
-			}
-		}
-	}
-}
-
-/*
- * Setting each column width
- * -----------------------------------------------------------------------------
-*/
-
-// Auto width column
-.column {
 	@include column-auto;
 }
 
-// Clamped width columns
 .column-clamped {
+	@extend %column;
 	@include column-clamped;
 }
 
 // Default columns
-@for $i from 1 through $columns-count {
-	.column-#{$i} {
-		@include make-regular-column($i);
-	}
-}
-
-// Custom columns
-@each $name, $width in $columns-aliases {
-	.column-#{$name} {
+@each $size, $width in $columns-sizes {
+	.column-#{$size} {
+		@extend %column;
 		@include make-column($width);
 	}
 }
 
-// Per breakpoint columns
-@each $name, $size in $breakpoints {
+// Aliases
+@each $alias, $extend-to in $columns-aliases {
+	.column-#{$alias} {
+		@extend .column-#{$extend-to};
+	}
+}
+
+/*
+ * Per Breakpoint Columns Sizes
+ * -----------------------------------------------------------------------------
+*/
+
+@each $name, $breakpoint in $breakpoints {
 	@if breakpoint-has-min-width($name) {
-		@include breakpoint-up($name) {
-			// Per breakpoint default columns
-			@for $i from 1 through $columns-count {
-				.column-#{$i}-#{$name} {
-					@include make-regular-column($i);
-				}
+		.column-#{$name} {
+			@extend %column;
+		}
+		
+		.column-clamped-#{$name} {
+			@extend %column;
+		}
+		
+		// Default columns
+		@each $size, $width in $columns-sizes {
+			.column-#{$size}-#{$name} {
+				@extend %column;
 			}
-			
-			// Per breakpoint auto width columns
+		}
+		
+		// Aliases
+		@each $alias, $extend-to in $columns-aliases {
+			.column-#{$alias}-#{$name} {
+				@extend .column-#{$extend-to}-#{$name};
+			}
+		}
+		
+		/*
+		 * Per Breakpoint Setting Size
+		 * -------------------------------------------------------------------------
+		*/
+		
+		@include breakpoint-up($name) {
 			.column-#{$name} {
 				@include column-auto;
 			}
 			
-			// Per breakpoint clamped width columns
 			.column-clamped-#{$name} {
 				@include column-clamped;
 			}
 			
-			// Per breakpoint custom columns
-			@each $alias, $width in $columns-aliases {
-				.column-#{$alias}-#{$name} {
+			// Default columns
+			@each $size, $width in $columns-sizes {
+				.column-#{$size}-#{$name} {
 					@include make-column($width);
 				}
 			}

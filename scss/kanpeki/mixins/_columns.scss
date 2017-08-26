@@ -4,14 +4,8 @@
 */
 
 @mixin make-column($width) {
-	$width: if-unitless-make-percentage($width);
-	
 	flex: 0 0 $width;
 	max-width: $width;
-}
-
-@mixin make-regular-column($i) {
-	@include make-column(percentage($i / $columns-count));
 }
 
 @mixin column-auto {

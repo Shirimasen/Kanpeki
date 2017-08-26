@@ -1,0 +1,59 @@
+/*
+ * Kanpeki
+ * Columns Functions
+*/
+
+@function generate-columns-sizes() {
+	$sizes-default: generate-default-sizes();
+	$columns-aliases: process-columns-aliases();
+	$sizes-extend: generate-columns-aliases();
+	
+	@each $name, $width-alias in $columns-aliases {
+		@each $size, $size-extend in $sizes-extend {
+			@if ($name == $size) {
+				$columns-aliases: map-remove($columns-aliases, $name);
+			}
+		}
+	}
+	$sizes-custom: $columns-aliases;
+	
+	@return map-merge($sizes-default, $sizes-custom);
+}
+
+@function generate-columns-aliases() {
+	$sizes-default: generate-default-sizes();
+	$columns-aliases: process-columns-aliases();
+	
+	$sizes-extend: ();
+	@each $size, $width-default in $sizes-default {
+		@each $name, $width-alias in $columns-aliases {
+			@if ($width-default == $width-alias) {
+				$sizes-extend: map-merge($sizes-extend, ($name: $size));
+			}
+		}
+	}
+	
+	@return $sizes-extend;
+}
+
+@function generate-default-sizes() {
+	$sizes-default: ();
+	@for $i from 1 through $columns-count {
+		$sizes-default: map-merge($sizes-default, (#{$i}: percentage($i / $columns-count)));
+	}
+	
+	@return $sizes-default;
+}
+
+@function process-columns-aliases() {
+	$columns-aliases-new: ();
+	@each $name, $width in $columns-aliases {
+		@if unitless($width) {
+			$width: percentage($width);
+		}
+		
+		$columns-aliases-new: map-merge($columns-aliases-new, ($name: $width));
+	}
+	
+	@return $columns-aliases-new;
+}
