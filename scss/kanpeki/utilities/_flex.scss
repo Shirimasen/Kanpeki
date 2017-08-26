@@ -3,6 +3,19 @@
  * Flexbox Utilities
 */
 
+.center {
+	justify-content: center;
+	align-items: center;
+}
+
+.center-x {
+	justify-content: center;
+}
+
+.center-y {
+	align-items: center;
+}
+
 /*
  * Order flex items
  * -----------------------------------------------------------------------------
