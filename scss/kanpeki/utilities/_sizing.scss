@@ -1,0 +1,60 @@
+/*
+ * Kanpeki
+ * Sizing Utilities
+*/
+
+@each $size, $width in $columns-sizes {
+	@include per-breakpoint('.width-#{$size}') {
+		width: $width;
+	}
+	
+	@include per-breakpoint('.max-width-#{$size}') {
+		max-width: $width;
+	}
+	
+	@include per-breakpoint('.height-#{$size}') {
+		height: $width;
+	}
+	
+	@include per-breakpoint('.max-height-#{$size}') {
+		max-height: $width;
+	}
+}
+
+@each $alias, $extend-to in $columns-aliases {
+	.width-#{$alias} {
+		@extend .width-#{$extend-to};
+	}
+	
+	.max-width-#{$alias} {
+		@extend .max-width-#{$extend-to};
+	}
+	
+	.height-#{$alias} {
+		@extend .height-#{$extend-to};
+	}
+	
+	.max-height-#{$alias} {
+		@extend .max-height-#{$extend-to};
+	}
+	
+	@each $name, $breakpoint in $breakpoints {
+		@if breakpoint-has-min-width($name) {
+			.width-#{$alias}-#{$name} {
+				@extend .width-#{$extend-to}-#{$name};
+			}
+			
+			.max-width-#{$alias}-#{$name} {
+				@extend .max-width-#{$extend-to}-#{$name};
+			}
+			
+			.height-#{$alias}-#{$name} {
+				@extend .height-#{$extend-to}-#{$name};
+			}
+			
+			.max-height-#{$alias}-#{$name} {
+				@extend .max-height-#{$extend-to}-#{$name};
+			}
+		}
+	}
+}

@@ -54,3 +54,19 @@
 		}
 	}
 }
+
+@mixin per-breakpoint($selector) {
+	#{$selector} {
+		@content;
+	}
+	
+	@each $name, $breakpoint in $breakpoints {
+		@if breakpoint-has-min-width($name) {
+			@include breakpoint-up($name) {
+				#{$selector}-#{$name} {
+					@content;
+				}
+			}
+		}
+	}
+}

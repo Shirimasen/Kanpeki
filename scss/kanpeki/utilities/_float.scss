@@ -1,0 +1,20 @@
+/*
+ * Kanpeki
+ * Float Utilities
+*/
+
+@include per-breakpoint('.float-left') {
+	float: left !important;
+}
+
+@include per-breakpoint('.float-right') {
+	float: right !important;
+}
+
+@include per-breakpoint('.float-none') {
+	float: none !important;
+}
+
+.clearfix {
+	@include clearfix;
+}

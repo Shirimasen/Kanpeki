@@ -7,7 +7,7 @@
 	margin: 0 auto;
 	
 	@each $name, $size in $container-max-widths {
-		@include breakpoint-only($name) {
+		@include breakpoint-up($name) {
 			max-width: $size;
 		}
 	}

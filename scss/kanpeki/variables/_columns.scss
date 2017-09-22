@@ -19,3 +19,6 @@ $columns-aliases: (
 	four-fifths: (4 / 5),
 	full: 100%
 ) !default;
+
+$columns-sizes: generate-columns-sizes();
+$columns-aliases: generate-columns-aliases();

@@ -3,33 +3,136 @@
  * Flexbox Utilities
 */
 
-.center {
+/*
+ * Flex Container
+ * -----------------------------------------------------------------------------
+*/
+
+$flex-directions: row, row-reverse, column, column-reverse;
+
+@each $flex-direction in $flex-directions {
+	@include per-breakpoint('.flex-#{$flex-direction}') {
+		flex-direction: $flex-direction;
+	}
+}
+
+/* -------------------------------------------------------------------------- */
+
+$flex-wraps: wrap, nowrap, wrap-reverse;
+
+@each $flex-wrap in $flex-wraps {
+	@include per-breakpoint('.flex-wrap') {
+		flex-wrap: wrap;
+	}
+}
+
+/* -------------------------------------------------------------------------- */
+
+@include per-breakpoint('.flex-justify-start') {
+	justify-content: flex-start;
+}
+
+@include per-breakpoint('.flex-justify-end') {
+	justify-content: flex-end;
+}
+
+@include per-breakpoint('.flex-justify-center') {
 	justify-content: center;
+}
+
+@include per-breakpoint('.flex-justify-between') {
+	justify-content: space-between;
+}
+
+@include per-breakpoint('.flex-justify-around') {
+	justify-content: space-around;
+}
+
+/* -------------------------------------------------------------------------- */
+
+@include per-breakpoint('.flex-align-start') {
+	align-items: flex-start;
+}
+
+@include per-breakpoint('.flex-align-end') {
+	align-items: flex-end;
+}
+
+@include per-breakpoint('.flex-align-center') {
 	align-items: center;
 }
 
-.center-x {
-	justify-content: center;
+@include per-breakpoint('.flex-align-stretch') {
+	align-items: stretch;
 }
 
-.center-y {
-	align-items: center;
+@include per-breakpoint('.flex-align-baseline') {
+	align-items: baseline;
+}
+
+/* -------------------------------------------------------------------------- */
+
+@include per-breakpoint('.flex-content-start') {
+	align-content: flex-start;
+}
+
+@include per-breakpoint('.flex-content-end') {
+	align-content: flex-end;
+}
+
+@include per-breakpoint('.flex-content-center') {
+	align-content: center;
+}
+
+@include per-breakpoint('.flex-content-stretch') {
+	align-content: stretch;
+}
+
+@include per-breakpoint('.flex-content-between') {
+	align-content: space-between;
+}
+
+@include per-breakpoint('.flex-content-around') {
+	align-content: space-around;
 }
 
 /*
- * Order flex items
+ * Flex Items
  * -----------------------------------------------------------------------------
 */
-.order-first {
+
+@include per-breakpoint('.order-first') {
 	order: ($columns-count + 1) * -1;
 }
 
-.order-last {
+@include per-breakpoint('.order-last') {
 	order: 1;
 }
 
 @for $i from 1 through $columns-count {
-	.order-#{$i} {
+	@include per-breakpoint('.order-#{$i}') {
 		order: ($columns-count - $i + 1) * -1;
 	}
+}
+
+/* -------------------------------------------------------------------------- */
+
+@include per-breakpoint('.flex-self-start') {
+	align-self: flex-start;
+}
+
+@include per-breakpoint('.flex-self-end') {
+	align-self: flex-end;
+}
+
+@include per-breakpoint('.flex-self-center') {
+	align-self: center;
+}
+
+@include per-breakpoint('.flex-self-stretch') {
+	align-self: stretch;
+}
+
+@include per-breakpoint('.flex-self-baseline') {
+	align-self: baseline;
 }

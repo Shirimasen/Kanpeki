@@ -1,0 +1,29 @@
+/*
+ * Kanpeki
+ * Position Utilities
+*/
+
+$positions: static, absolute, fixed, relative, sticky;
+
+@each $position in $positions {
+	.position-#{$position} {
+		position: $position !important;
+	}
+}
+
+.position-top {
+	position: fixed !important;
+	top: 0;
+}
+
+.position-bottom {
+	position: fixed !important;
+	bottom: 0;
+}
+
+@supports (position: sticky) {
+	.position-sticky {
+		position: sticky !important;
+		top: 0;
+	}
+}

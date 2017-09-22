@@ -1,0 +1,12 @@
+/*
+ * Kanpeki
+ * Float Mixins
+*/
+
+@mixin clearfix {
+	&::after {
+		display: table;
+		content: "";
+		clear: both;
+	}
+}

@@ -1,0 +1,12 @@
+/*
+ * Kanpeki
+ * Display Utilities
+*/
+
+$displays: none, block, inline, inline-block, flex;
+
+@each $display in $displays {
+	@include per-breakpoint('.display-#{$display}') {
+		display: $display !important;
+	}
+}

@@ -7,23 +7,23 @@
 	display: flex;
 	flex-wrap: wrap;
 	margin: (-$columns-gutter / 2);
-	
+
 	&:not(.no-gutters) + &.no-gutters {
 		margin-top: $columns-gutter;
 	}
-	
+
 	& + & {
 		margin-top: ($columns-gutter / 2);
 	}
-	
+
 	&.no-gutters, &.no-gutters & {
 		margin: 0;
 	}
-	
+
 	&.no-gutters [class*="column"] {
 		padding: 0;
 	}
-	
+
 	&.show [class*="column"] {
 		// background-clip: content-box;
 		background-color: darken($generic-body-background-color, 10%);
@@ -45,9 +45,6 @@
  * Columns Sizes
  * -----------------------------------------------------------------------------
 */
-
-$columns-sizes: generate-columns-sizes();
-$columns-aliases: generate-columns-aliases();
 
 .column {
 	@extend %column;
@@ -84,39 +81,39 @@ $columns-aliases: generate-columns-aliases();
 		.column-#{$name} {
 			@extend %column;
 		}
-		
+
 		.column-clamped-#{$name} {
 			@extend %column;
 		}
-		
+
 		// Default columns
 		@each $size, $width in $columns-sizes {
 			.column-#{$size}-#{$name} {
 				@extend %column;
 			}
 		}
-		
+
 		// Aliases
 		@each $alias, $extend-to in $columns-aliases {
 			.column-#{$alias}-#{$name} {
 				@extend .column-#{$extend-to}-#{$name};
 			}
 		}
-		
+
 		/*
 		 * Per Breakpoint Setting Size
 		 * -------------------------------------------------------------------------
 		*/
-		
+
 		@include breakpoint-up($name) {
 			.column-#{$name} {
 				@include column-auto;
 			}
-			
+
 			.column-clamped-#{$name} {
 				@include column-clamped;
 			}
-			
+
 			// Default columns
 			@each $size, $width in $columns-sizes {
 				.column-#{$size}-#{$name} {
