@@ -1,0 +1,29 @@
+/*
+ * Kanpeki
+ * String Functions
+*/
+
+@function str-last-index($str, $sub) {
+	@if (str-index($str, $sub) == null) {
+		@return null;
+	}
+	
+	$str-r: str-reverse($str);
+	$sub-r: str-reverse($sub);
+	$length: str-length($str);
+	$index: str-index($str-r, $sub-r);
+	$correction: str-length($sub) - 1;
+	
+	@return $length - $index + 1 - $correction;
+}
+
+@function str-reverse($str) {
+	$length: str-length($str);
+	$new-str: '';
+	
+	@for $i from $length through 1 {
+		$new-str: $new-str + str-slice($str, $i, $i);
+	}
+	
+	@return $new-str;
+}

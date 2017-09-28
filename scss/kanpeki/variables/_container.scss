@@ -8,8 +8,8 @@
  * $breakpoints map is in 'variables/_breakpoints.scss'
 */
 $container-max-widths: (
-	tiny: 100%,
-	small: 720px,
-	medium: 960px,
-	large: 1200px
+	'tiny': 100%,
+	'small': 720px,
+	'medium': 960px,
+	'large': 1200px
 ) !default;

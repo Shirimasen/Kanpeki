@@ -1,0 +1,38 @@
+/*
+ * Kanpeki
+ * Colors Functions
+*/
+
+@function color($name) {
+	$name: to-lower-case($name);
+	$dash: str-last-index($name, '-');
+	
+	@if (global-variable-exists('colors-default')) {
+		@if (map-has-key($colors-default, $name)) {
+			@return map-get($colors-default, $name);
+		}
+	}
+	
+	@if (map-has-key($colors-other, $name)) {
+		@return map-get($colors-other, $name);
+	}
+	
+	@if (map-has-key($colors, $name)) {
+		@return map-get(map-get($colors, $name), '500');
+	}
+	
+	@if ($dash) {
+		$first: str-slice($name, 1, $dash - 1);
+		$second: str-slice($name, $dash + 1);
+		
+		@if (map-has-key($colors, $first)) {
+			$inner-map: map-get($colors, $first);
+			
+			@if (map-has-key($inner-map, $second)) {
+				@return map-get($inner-map, $second);
+			}
+		}
+	}
+	
+	@error 'The color named #{$name} does not exist!';
+}

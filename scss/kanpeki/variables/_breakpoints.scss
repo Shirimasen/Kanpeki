@@ -10,8 +10,8 @@
  * $container-max-widths map is in 'variables/_container.scss'
 */
 $breakpoints: (
-	tiny: 0,
-	small: 768px,
-	medium: 1024px,
-	large: 1280px
+	'tiny': 0,
+	'small': 768px,
+	'medium': 1024px,
+	'large': 1280px
 ) !default;
