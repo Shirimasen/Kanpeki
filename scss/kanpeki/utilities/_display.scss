@@ -9,4 +9,8 @@ $displays: none, block, inline, inline-block, flex;
 	@include per-breakpoint('.display-#{$display}') {
 		display: $display !important;
 	}
+	
+	@include per-breakpoint-only('.display-#{$display}') {
+		display: $display !important;
+	}
 }

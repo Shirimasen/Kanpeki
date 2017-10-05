@@ -70,3 +70,15 @@
 		}
 	}
 }
+
+@mixin per-breakpoint-only($selector) {
+	@each $name, $breakpoint in $breakpoints {
+		@if breakpoint-has-max-width($name) {
+			@include breakpoint-only($name) {
+				#{$selector}-#{$name}-only {
+					@content;
+				}
+			}
+		}
+	}
+}
