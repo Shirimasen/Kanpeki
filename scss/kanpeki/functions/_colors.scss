@@ -4,12 +4,26 @@
 */
 
 @function color($name) {
+	$temp-map: map-merge($colors, $colors-default);
 	$name: to-lower-case($name);
+	
+	@if (map-has-key($temp-map, $name)) {
+		@return map-get(map-get($temp-map, $name), '500');
+	}
+	
 	$dash: str-last-index($name, '-');
 	
-	@if (global-variable-exists('colors-default')) {
-		@if (map-has-key($colors-default, $name)) {
-			@return map-get($colors-default, $name);
+	@if ($dash) {
+		$first: str-slice($name, 1, $dash - 1);
+		$second: str-slice($name, $dash + 1);
+		
+	
+		@if (map-has-key($temp-map, $first)) {
+			$inner-map: map-get($temp-map, $first);
+	
+			@if (map-has-key($inner-map, $second)) {
+				@return map-get($inner-map, $second);
+			}
 		}
 	}
 	
@@ -17,22 +31,24 @@
 		@return map-get($colors-other, $name);
 	}
 	
-	@if (map-has-key($colors, $name)) {
-		@return map-get(map-get($colors, $name), '500');
-	}
-	
-	@if ($dash) {
-		$first: str-slice($name, 1, $dash - 1);
-		$second: str-slice($name, $dash + 1);
-		
-		@if (map-has-key($colors, $first)) {
-			$inner-map: map-get($colors, $first);
-			
-			@if (map-has-key($inner-map, $second)) {
-				@return map-get($inner-map, $second);
-			}
-		}
-	}
-	
 	@error 'The color named #{$name} does not exist!';
+}
+
+@function luminance($color) {
+	@return (0.2126 * red($color) + 0.7152 * green($color) + 0.0722 * blue($color)) / 255;
+}
+
+// Kill me please
+@function light-or-dark-based-on-luminance($color) {
+	@return if((luminance($color) < 0.7), color('light'), color('dark'));
+}
+
+@function generate-colors() {
+	$temp-colors: $colors-other;
+
+	@each $color-name, $color-map in $colors-default {
+		$temp-colors: map-merge($temp-colors, ($color-name: color($color-name)));
+	}
+	
+	@return $temp-colors;
 }

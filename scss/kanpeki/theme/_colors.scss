@@ -19,7 +19,7 @@ $color-red: (
 	'a200':	#ff5252,
 	'a400':	#ff1744,
 	'a700':	#d50000
-);
+) !default;
 
 $color-pink: (
 	'50':		#fce4ec,
@@ -36,7 +36,7 @@ $color-pink: (
 	'a200':	#ff4081,
 	'a400':	#f50057,
 	'a700':	#c51162
-);
+) !default;
 
 $color-purple: (
 	'50':		#f3e5f5,
@@ -53,7 +53,7 @@ $color-purple: (
 	'a200':	#e040fb,
 	'a400':	#d500f9,
 	'a700':	#aa00ff
-);
+) !default;
 
 $color-deep-purple: (
 	'50':		#ede7f6,
@@ -70,7 +70,7 @@ $color-deep-purple: (
 	'a200':	#7c4dff,
 	'a400':	#651fff,
 	'a700':	#6200ea
-);
+) !default;
 
 $color-indigo: (
 	'50':		#e8eaf6,
@@ -87,7 +87,7 @@ $color-indigo: (
 	'a200':	#536dfe,
 	'a400':	#3d5afe,
 	'a700':	#304ffe
-);
+) !default;
 
 $color-blue: (
 	'50':		#e3f2fd,
@@ -104,7 +104,7 @@ $color-blue: (
 	'a200':	#448aff,
 	'a400':	#2979ff,
 	'a700':	#2962ff
-);
+) !default;
 
 $color-light-blue: (
 	'50':		#e1f5fe,
@@ -121,7 +121,7 @@ $color-light-blue: (
 	'a200':	#40c4ff,
 	'a400':	#00b0ff,
 	'a700':	#0091ea
-);
+) !default;
 
 $color-cyan: (
 	'50':		#e0f7fa,
@@ -138,7 +138,7 @@ $color-cyan: (
 	'a200':	#18ffff,
 	'a400':	#00e5ff,
 	'a700':	#00b8d4
-);
+) !default;
 
 $color-teal: (
 	'50':		#e0f2f1,
@@ -155,7 +155,7 @@ $color-teal: (
 	'a200':	#64ffda,
 	'a400':	#1de9b6,
 	'a700':	#00bfa5
-);
+) !default;
 
 $color-green: (
 	'50':		#e8f5e9,
@@ -172,7 +172,7 @@ $color-green: (
 	'a200':	#69f0ae,
 	'a400':	#00e676,
 	'a700':	#00c853
-);
+) !default;
 
 $color-light-green: (
 	'50':		#f1f8e9,
@@ -189,7 +189,7 @@ $color-light-green: (
 	'a200':	#b2ff59,
 	'a400':	#76ff03,
 	'a700':	#64dd17
-);
+) !default;
 
 $color-lime: (
 	'50':		#f9fbe7,
@@ -206,7 +206,7 @@ $color-lime: (
 	'a200':	#eeff41,
 	'a400':	#c6ff00,
 	'a700':	#aeea00
-);
+) !default;
 
 $color-yellow: (
 	'50':		#fffde7,
@@ -223,7 +223,7 @@ $color-yellow: (
 	'a200':	#ffff00,
 	'a400':	#ffea00,
 	'a700':	#ffd600
-);
+) !default;
 
 $color-amber: (
 	'50':		#fff8e1,
@@ -240,7 +240,7 @@ $color-amber: (
 	'a200':	#ffd740,
 	'a400':	#ffc400,
 	'a700':	#ffab00
-);
+) !default;
 
 $color-orange: (
 	'50':		#fff3e0,
@@ -257,7 +257,7 @@ $color-orange: (
 	'a200':	#ffab40,
 	'a400':	#ff9100,
 	'a700':	#ff6d00
-);
+) !default;
 
 $color-deep-orange: (
 	'50':		#fbe9e7,
@@ -274,7 +274,7 @@ $color-deep-orange: (
 	'a200':	#ff6e40,
 	'a400':	#ff3d00,
 	'a700':	#dd2c00
-);
+) !default;
 
 $color-brown: (
 	'50':		#efebe9,
@@ -287,7 +287,7 @@ $color-brown: (
 	'700':	#5d4037,
 	'800':	#4e342e,
 	'900':	#3e2723
-);
+) !default;
 
 $color-grey: (
 	'50':		#fafafa,
@@ -300,7 +300,7 @@ $color-grey: (
 	'700':	#616161,
 	'800':	#424242,
 	'900':	#212121
-);
+) !default;
 
 $color-blue-grey: (
 	'50':		#eceff1,
@@ -313,7 +313,7 @@ $color-blue-grey: (
 	'700':	#455a64,
 	'800':	#37474f,
 	'900':	#263238
-);
+) !default;
 
 $colors: (
 	'red':					$color-red,
@@ -337,20 +337,20 @@ $colors: (
 	'gray':					$color-grey,
 	'blue-grey':		$color-blue-grey,
 	'blue-gray':		$color-blue-grey
-);
+) !default;
+
+$colors-default: (
+	'primary':		$color-orange,
+	'secondary':	$color-blue,
+	'success':		$color-green,
+	'info':				$color-light-blue,
+	'warning':		$color-yellow,
+	'danger':			$color-red
+) !default;
 
 $colors-other: (
 	'white':	#ffffff,
-	'black':	#000000
-);
-
-$colors-default: (
-	'primary':		color('orange'),
-	'secondary':	color('blue'),
-	'success':		color('green'),
-	'info':				color('light-blue'),
-	'warning':		color('yellow'),
-	'danger':			color('red'),
-	'light':			color('gray-50'),
-	'dark':				color('gray-900')
-);
+	'black':	#000000,
+	'light':	color('gray-50'),
+	'dark':		color('gray-900')
+) !default;

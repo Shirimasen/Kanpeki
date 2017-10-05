@@ -2,3 +2,16 @@
  * Kanpeki
  * Colors Utilities
 */
+
+$temp-colors: generate-colors();
+
+@each $color-name, $color in $temp-colors {
+	.background-#{$color-name} {
+		background-color: $color;
+		color: light-or-dark-based-on-luminance($color);
+	}
+	
+	.text-#{$color-name} {
+		color: $color;
+	}
+}
